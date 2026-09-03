@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="/static/css/diary_search.css">
+
+{% extends "diary.html" %}
+
+{% block title %}
+Search Page
+{% endblock %}
+
+{% block content %}
+<div class="search">
+    <form method="POST" action="{{ url_for('diary_search') }}">
+        <input type="text" name="keyword" placeholder="Search by keyword" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if request.method == 'POST' %}
+        {% if search_results %}
+            <h1>Search Results:</h1>
+            <ul>
+                {% for diary in search_results %}
+                <li>
+                    <strong>{{ diary['diary_title'] }}</strong> - {{ diary['diary_date'] }} <br>
+                    <p class="diary-content">{{ diary.diary_content | e }}</p>
+
+                    {% if diary['diary_imageurl'] %}
+                        {% if diary['diary_imageurl'].endswith('.mp4') %}
+                        <!-- 動画がある場合 -->
+                        <video controls class="diary-video">
+                            <source src="{{ diary['diary_imageurl'] }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        {% else %}
+                        <!-- 画像がある場合 -->
+                        <img src="{{ diary['diary_imageurl'] }}" alt="Diary Image" class="diary-image">
+                        {% endif %}
+                    {% endif %}
+
+                    <!-- 詳細ページへの遷移ボタン -->
+                    <a href="{{ url_for('diary_detail', diary_id=diary['diary_id']) }}" class="btn-detail">詳細を見る</a>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+        <p class="no-results">該当なし</p>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

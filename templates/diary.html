@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="/static/css/diary.css">    
+</head>
+
+<body>
+    <div class="background-container-overlay"></div>
+    <!-- ハンバーガーメニュー -->
+    <div class="hamburger-menu" id="hamburger-menu">
+        <div class="hamburger-menu-bar"></div>
+        <div class="hamburger-menu-bar"></div>
+        <div class="hamburger-menu-bar"></div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+            <a href="{{ url_for('index') }}">ホーム</a>
+            <a href="{{ url_for('diary_home') }}">MYDIARY</a>
+            <a href="{{ url_for('diary_write') }}">WRITE</a>
+            <a href="{{ url_for('diary_calendar') }}">CALENDAR</a>
+            <a href="{{ url_for('diary_search') }}">SEARCH</a>
+            <a href="{{ url_for('logout') }}">ログアウト</a>
+        </div>
+    </div>
+
+    <div class="username_place">
+        <h1><a>{{ username if username else "ゲスト" }} さん</a></h1>
+    </div>
+
+    <div class="diary-tabs">
+        <a href="{{ url_for('diary_home') }}" class="{% if request.endpoint == 'diary_home' %}active{% endif %}">MYDIARY</a>
+        <a href="{{ url_for('diary_write') }}" class="{% if request.endpoint == 'diary_write' %}active{% endif %}">WRITE</a>
+        <a href="{{ url_for('diary_calendar') }}" class="{% if request.endpoint == 'diary_calendar' %}active{% endif %}">CALENDAR</a>
+        <a href="{{ url_for('diary_search') }}" class="{% if request.endpoint == 'diary_search' %}active{% endif %}">SEARCH</a>
+    </div>
+
+    <div class="contents">
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+
+</html>

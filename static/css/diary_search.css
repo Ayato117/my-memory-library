@@ -1,0 +1,181 @@
+/* 検索ページ全体のスタイル */
+.search {
+  width: 800px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 横方向の中央揃え */
+  justify-content: center; /* 縦方向の中央揃え */
+}
+
+/* フォームのスタイル */
+form {
+  display: flex;
+  justify-content: center;  /* 横方向に中央揃え */
+  align-items: center;      /* 縦方向にも中央揃え */
+  gap: 10px;  /* 入力フィールドとボタンの間隔 */
+  width: 100%;
+  max-width: 600px;
+  height: 50px; /* フォームの高さを指定 */
+  margin-bottom: 0; /* フォームの下の余白をリセット */
+}
+
+/* 入力フィールド */
+input[type="text"] {
+  flex-grow: 1; /* 入力フィールドがフォームの高さに合わせて広がる */
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+  height: 100%;  /* 高さを100%に設定 */
+  margin: 0; /* 余白を無くして調整 */
+  margin-bottom: 0; /* 下の余白をリセット */
+}
+
+/* 検索ボタン */
+button {
+  padding: 12px 20px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  height: 100%;  /* 高さを100%に設定 */
+  margin: 0; /* 余白を無くして調整 */
+  margin-bottom: 0; /* 下の余白をリセット */
+}
+
+/* 入力フィールドのフォーカス時 */
+input[type="text"]:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+/* 検索ボタンのホバー時 */
+button:hover {
+  background-color: #45a049;
+}
+
+/* 検索結果リスト */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 各日記カード */
+ul li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px; /* 下の余白を少し小さく */
+  padding: 15px; /* パディングを小さくして高さを抑える */
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background-color: #fafafa;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  text-align: center; /* ボタンを中央揃え */
+}
+
+/* 日記タイトル */
+ul li strong {
+  font-size: 1.5em;  /* フォントサイズを小さくしてコンパクトに */
+  color: #333;
+  margin-bottom: 5px; /* タイトルと内容の間の余白を縮小 */
+}
+
+/* 日記内容の部分 */
+ul li p {
+  font-size: 1em;  /* フォントサイズを少し小さく */
+  color: #666;
+  margin-bottom: 5px; /* 内容とボタンの間の余白を縮小 */
+}
+
+/* 詳細ページリンク */
+ul li a {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 6px 12px; /* ボタンのサイズを少しコンパクトに */
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 0.9rem;  /* ボタンの文字サイズを少し小さく */
+  text-align: center;
+  transition: background-color 0.3s ease;
+  width: auto;
+  max-width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 日記内容のスタイル */
+.diary-content {
+  font-size: 1em;  /* 内容のフォントサイズを少し小さく */
+  line-height: 1.4;
+  text-align: justify;
+  color: #333;
+  margin-bottom: 20px; /* 内容と画像の間隔を狭くする */
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  width: 100%;
+  text-align: center;
+}
+
+/* 画像・動画 */
+.diary-image, .diary-video {
+  max-width: 100%;
+  max-height: 400px;
+  height: auto;
+  margin: 20px 0;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* 詳細ページリンク（ボタンの配置変更） */
+ul li .btn-detail {
+  display: block; /* 中央に配置 */
+  margin-top: 20px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  width: auto;  /* 自動で幅調整 */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 詳細ページリンクのホバー時 */
+ul li .btn-detail:hover {
+  background-color: #45a049;
+}
+
+/* 該当なしのメッセージ */
+.no-results {
+  background-color: #ffdddd;
+  color: #d9534f;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 20px;
+  border: 2px solid #d9534f;
+}

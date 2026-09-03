@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Library</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+</head>
+<body>
+    <div class="background-container-overlay"></div>
+
+    <div class="username_place">
+        {% if login %}
+        <h1><a>{{ username }} さん</a></h1>
+        {% else %}
+        <h1><a href="{{ url_for('auth') }}">ログイン or サインアップ</a></h1>
+        {% endif %}
+    </div>
+
+    <!-- ハンバーガーメニュー -->
+    <div class="hamburger-menu" id="hamburger-menu">
+        <div class="hamburger-menu-bar"></div>
+        <div class="hamburger-menu-bar"></div>
+        <div class="hamburger-menu-bar"></div>
+    </div>   
+    <!-- サイドバー -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+            {% if login %}
+            <a href="{{ url_for('diary_home') }}">日記</a>
+            <a>New Contents<br>Coming Soon</a>
+            <a href="{{ url_for('logout') }}">ログアウト</a>
+            {% else %}
+            <a href="{{ url_for('auth') }}">ログイン<br>or<br>サインアップ</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="title">
+        {% if login %}
+        <h1>Welcome to<br>My Memory Library</h1>
+        {% else %}
+        <h1>Welcome to<br>Your Memory Library</h1>
+        {% endif %}
+    </div>    
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

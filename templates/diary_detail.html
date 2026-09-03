@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="/static/css/diary_detail.css">
+
+{% extends "diary.html" %}
+
+{% block title %}
+Diary Detail
+{% endblock %}
+
+{% block content %}
+<div class="diary-detail-container">
+    <h1 class="detail-h1">{{ diary.diary_title }}</h1>
+    <p class="diary-date">{{ diary.diary_date.strftime('%Y-%m-%d') }}</p>
+
+    {% if diary.diary_imageurl %}
+        {% if diary.diary_imageurl.endswith(('.mp4', '.webm', '.ogg')) %}
+            <video src="{{ diary.diary_imageurl }}" class="diary-video" controls></video>
+        {% elif diary.diary_imageurl.endswith(('.jpg', '.jpeg', '.png', '.gif')) %}
+            <img src="{{ diary.diary_imageurl }}" class="diary-image" alt="Diary Image">
+        {% endif %}
+    {% endif %}
+
+    <p class="diary-content">{{ diary.diary_content | e }}</p>
+    <!-- <p>{{ diary.diary_content.replace('\n', '<br>') | safe }}</p>  ←これだとXSS対策失敗-->
+
+    <a href="{{ url_for('diary_home') }}" class="btn btn-back">MYDIARY</a>
+    <a href="{{ url_for('diary_edit', diary_id=diary.diary_id) }}" class="btn btn-edit">編集</a>
+</div>
+{% endblock %}

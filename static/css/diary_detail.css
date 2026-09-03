@@ -1,0 +1,94 @@
+.diary-detail-container {
+    width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    box-sizing: border-box;
+}
+
+/* 見出し */
+.detail-h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #3a3a3a;
+}
+
+/* 日付 */
+.diary-date {
+    font-size: 1.2em;
+    color: #777;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* 画像や動画のスタイル */
+.diary-image, .diary-video {
+    max-width: 100%;
+    max-height: 500px; /* 最大高さを設定 */
+    height: auto;
+    margin: 20px 0;
+    border-radius: 8px;
+    object-fit: cover; /* 画像の縦横比を保ちながらコンテナに収める */
+}
+
+/* 本のページのような余白 */
+.diary-content {
+    font-size: 1.2em;
+    line-height: 1.6;
+    text-align: justify;
+    color: #333;
+    margin-bottom: 40px;
+    white-space: pre-wrap;  /* 改行と空白を保持しつつ、長い文字列を折り返す */
+    word-wrap: break-word;  /* 単語の途中で折り返す */
+    overflow-wrap: break-word; /* 長い単語を折り返す */
+    width: 100%;  /* コンテナ幅に合わせて広げる */
+    text-align: center;  /* 中央寄せ */
+}
+
+/* 共通のボタンスタイル */
+.btn {
+    display: inline-block;
+    background-color: #4CAF50; /* デフォルトの緑色 */
+    color: #fff;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease; /* 背景色の変化のみ */
+}
+
+/* ボタンのホバー時のスタイル */
+.btn:hover {
+    background-color: #45a049;
+}
+
+/* ボタンがアクティブな時のスタイル */
+.btn:active {
+    background-color: #45a049; /* アクティブ時もホバーと同じ背景色 */
+}
+
+/* MYDIARYボタン */
+.btn-back {
+    background-color: #6c757d; /* 背景色をグレーに */
+}
+
+/* 編集ボタン */
+.btn-edit {
+    background-color: #007bff; /* 編集ボタンは青色 */
+}
+
+/* ボタンにホバーしたときの背景色変更 */
+.btn-back:hover {
+    background-color: #5a6268;
+}
+
+.btn-edit:hover {
+    background-color: #0056b3;
+}

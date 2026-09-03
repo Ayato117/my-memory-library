@@ -1,0 +1,134 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../img/library1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative; /* グラデーションを重ねるために必要 */
+}
+
+/* 背景の上にグラデーション */
+.background-container-overlay {
+  position: fixed; /* 常に画面全体を覆う */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, #7730a8, #5334ad 40%, #5792ff 90%, #67b2ff 100%);
+  opacity: 0.8;
+  z-index: 1;
+  pointer-events: none; /* グラデーションをクリック不能に */
+}
+
+/* ハンバーガーメニュー */
+.hamburger-menu {
+  position: absolute;
+  top: 2vh;
+  left: 1vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2vw;
+  height: 1.5vw;
+  cursor: pointer;
+  z-index: 4; /* サイドバーよりも上に表示 */
+  transition: transform 0.3s ease;
+}
+.hamburger-menu .hamburger-menu-bar {
+  height: 0.2vw;
+  background-color: white;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.hamburger-menu:hover .hamburger-menu-bar {
+  background-color: #ffeb3b;
+  box-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b; /* ネオンの光る効果 */
+}
+
+.hamburger-menu.active .hamburger-menu-bar:nth-child(1) {
+  transform: rotate(45deg) translate(0.45vw, 0.45vw);
+}
+.hamburger-menu.active .hamburger-menu-bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-menu.active .hamburger-menu-bar:nth-child(3) {
+  transform: rotate(-45deg) translate(0.5vw, -0.5vw);
+}
+
+/* サイドバー */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -20vw;
+  width: 20vw;
+  height: 100vh;
+  background-color: black;
+  color: #fff;
+  transition: left 0.3s ease;
+  z-index: 3;
+}
+.sidebar.active {
+  left: 0;
+}
+.sidebar-content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar a {
+  color: white;
+  margin-top: 2vh;
+  text-align: center;
+  font-size: 1.5vw;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.sidebar a:hover {
+  color: #ffeb3b;
+  text-shadow: 0 0 10px #ffeb3b;
+}
+
+
+/* 画面右上に出すユーザーの名前 */
+.username_place {
+  position: absolute;
+  top: 2vh;
+  right: 2vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 40vw;
+  z-index: 2;
+}
+.username_place h1 {
+  margin: 0 1vw;
+}
+.username_place h1 a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.username_place h1 a:hover {
+  color: #ffeb3b;
+  text-shadow: 0 0 10px #ffeb3b;
+}
+
+/* 中央表示のコンテンツ */
+.title {
+  text-align: center;
+  color: white;
+  font-size: 48px;
+  z-index: 2;
+}

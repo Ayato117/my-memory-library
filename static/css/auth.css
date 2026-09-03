@@ -1,0 +1,170 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+display: flex;
+justify-content: center;
+align-items: center;
+background-image: url(../img/library1.jpg);
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+position: relative; /* グラデーションを重ねるために必要 */
+}
+
+/* 背景の上にグラデーション */
+.background-container-overlay {
+position: fixed; /* 常に画面全体を覆う */
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(120deg, #7730a8, #5334ad 40%, #5792ff 90%, #67b2ff 100%);
+opacity: 0.8;
+z-index: 1;
+pointer-events: none;
+}
+
+/* authの全体 */
+.auth-all {
+    width: 40vw;
+    height: 100vh;
+    background-color: #134d83;
+    z-index: 2;
+}
+
+.auth-contents {
+    padding: 6vh 3vw 0 3vw;
+}
+.auth-contents .log-in,
+.auth-contents .sign-up,
+.auth-form .group .check {
+    display: none;
+}
+
+.auth-form .login-form,
+.auth-form .signup-form {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    transition: all .4s linear;
+}
+
+.auth-contents .tab {
+    font-size: 22px;
+    margin: 0 1vw 1.5vw 0;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+}
+
+.auth-contents .tab:hover {
+    color: #ffeb3b;
+    text-shadow: 0 0 10px #ffeb3b;
+}
+
+.auth-contents .log-in:checked+.tab,
+.auth-contents .sign-up:checked+.tab {
+    color: #fff;
+    border-color: #1161ee;
+}
+
+.auth-form {
+    position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.auth-form .group {
+    margin-bottom: 3vh;
+}
+
+.auth-form .group .label {
+    display: block;
+    margin-bottom: 5px;
+    color: #aaa;
+    font-size: 12px;
+}
+.auth-form .group .input {
+    width: 100%;
+    border: 1px solid #fff;
+    background: rgba(255, 255, 255, .1);
+    color: #fff;
+    font-size: 16px;
+    border-radius: 25px; /* 角丸調整 */
+    padding: 2vh 1vw; /* 上下・左右に余白を設定 */
+    box-sizing: border-box; /* 枠全体のサイズにパディングを含む */
+}
+
+.auth-form .group input[data-type="password"] {
+    -webkit-text-security: circle; /* パスワードの文字を丸にする */
+}
+
+.auth-form .group .input:focus {
+    outline: none; /* フォーカス時のデフォルト青枠を削除 */
+    border-color: #1161ee; /* フォーカス時の枠色変更 */
+    background: rgba(255, 255, 255, .2); /* フォーカス時の背景色を調整 */
+}
+
+.auth-form .group .button {
+    width: 100%;
+    margin-top: 2vh;
+    background-color: #1161ee;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    padding: 2vh 0 2vh 0;
+    border-radius: 25px;
+}
+.auth-form .group .button:hover {
+    background: #0e50c8;
+}
+
+.auth-contents .log-in:checked+.tab+.sign-up+.tab+.auth-form .login-form {
+    transform: rotate(0); 
+}
+
+.auth-contents .sign-up:checked+.tab+.auth-form .signup-form {
+    transform: rotate(0);
+}
+
+/* エラーメッセージ */
+.error-message {
+    color: red;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 2vh;
+}
+
+/* authの下のコンテンツ */
+.line {
+    height: 0.5vh;
+    margin: 4vh 0 5vh 0;
+    background: rgba(255, 255, 255, .2);
+}
+
+.foot-contents {
+    text-align: center;
+}
+
+.foot-contents a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.foot-contents a:hover {
+    color: #ffeb3b;
+    text-shadow: 0 0 10px #ffeb3b;
+}

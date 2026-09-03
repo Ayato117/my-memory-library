@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Page</title>
+    <link rel="stylesheet" href="/static/css/auth.css">
+    <script defer src="/static/js/auth.js"></script>
+</head>
+<body>
+    <div class="background-container-overlay"></div>
+
+    <div class="auth-all">
+        <div class="auth-contents">
+            <!-- ログインとサインアップのタブ -->
+            <input id="tab-1" type="radio" name="tab" class="log-in" checked>
+            <label for="tab-1" class="tab">ログイン</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up">
+            <label for="tab-2" class="tab">サインアップ</label>
+            
+            <div class="auth-form">
+                <!-- ログインフォーム -->
+                <div class="login-form">
+                    <form action="{{ url_for('auth') }}" method="post">
+                        <input type="hidden" name="action" value="login">
+                        <div class="group">
+                            <label for="login-email" class="label">メールアドレス</label>
+                            <input id="login-email" type="email" name="email" class="input" required>
+                        </div>
+                        <div class="group">
+                            <label for="login-password" class="label">パスワード</label>
+                            <input id="login-password" type="password" name="password" class="input" data-type="password" required>
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="ログイン">
+                        </div>
+                         <!-- エラーメッセージの表示 -->
+                         {% if error %}
+                         <div class="error-message">{{ error }}</div>
+                         {% endif %}
+
+                        <div class="line"></div>
+
+                        <div class="foot-contents">
+                            <a href="#forgot">パスワードを忘れた場合</a>
+                        </div>
+                        <br>
+                        <div class="foot-contents">
+                            <a href="{{ url_for('logout') }}">最初の画面に戻る</a>
+                        </div>
+                       
+                    </form>
+                </div>
+
+                <!-- サインアップフォーム -->
+                <div class="signup-form">
+                    <form id="signup-form" action="{{ url_for('auth') }}" method="post">
+                        <input type="hidden" name="action" value="signup">
+                        <div class="group">
+                            <label for="signup-username" class="label">ユーザー名</label>
+                            <input id="signup-username" type="text" name="username" class="input" required>
+                        </div>
+                        <div class="group">
+                            <label for="signup-email" class="label">メールアドレス</label>
+                            <input id="signup-email" type="email" name="email" class="input" required>
+                        </div>
+                        <div class="group">
+                            <label for="signup-password" class="label">パスワード</label>
+                            <input id="signup-password" type="password" name="password" class="input" data-type="password" required>
+                        </div>
+                        <div class="group">
+                            <label for="signup-repeat-password" class="label">パスワード確認</label>
+                            <input id="signup-repeat-password" type="password" name="repeat-password" class="input" data-type="password" required>
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="サインアップ">
+                        </div>
+
+                        <!-- エラーメッセージの表示 -->
+                        {% if error %}
+                        <div class="error-message">{{ error }}</div>
+                        {% endif %}
+
+                        <div class="line"></div>
+
+                        <div class="foot-contents">
+                            <label for="tab-1"><a>既に会員の方はこちら</a></label>
+                        </div>
+                        
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

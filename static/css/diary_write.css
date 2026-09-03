@@ -1,0 +1,108 @@
+/* テキストエリアのリサイズを禁止 */
+textarea {
+    resize: none;
+    height: 25vh;
+}
+
+.diary-contents{
+    text-align: center;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+}
+
+/* フォーム全体のスタイル */
+form {
+    display: flex;
+    flex-direction: column; /* 項目を縦に並べる */
+    gap: 20px; /* 各項目の間隔を設定 */
+    margin: 0 auto; /* 中央揃え */
+    padding: 20px;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 入力フィールドのスタイル */
+input[type="text"], input[type="date"], textarea {
+    width: 100%; /* フル幅を使用 */
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* 入力フィールドにフォーカスしたときのスタイル */
+input[type="text"]:focus, input[type="date"]:focus, textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* 画像プレビューのスタイル */
+#image_preview, #video_preview {
+    max-width: 100%; /* 幅を100%に設定 */
+    max-height: 400px; /* 縦の最大高さを400pxに設定 */
+    height: auto; /* アスペクト比を保持 */
+    margin-top: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    object-fit: cover; /* 画像や動画を中央でトリミング */
+}
+
+/* 動画プレビューのスタイル (画像と同じ大きさにするため) */
+#video_preview {
+    max-width: 100%; /* 幅を100%に設定 */
+    max-height: 400px; /* 高さの最大値を設定 */
+    object-fit: cover; /* 画像と同じように中央でトリミング */
+}
+
+/* ファイル入力と削除ボタンを横並びに配置 */
+.file-container {
+    display: flex;
+    align-items: center;  /* 垂直方向に中央揃え */
+    gap: 10px; /* 入力とボタンの間隔 */
+}
+
+/* 削除ボタンのスタイル */
+#delete_media_button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 8px; /* 横幅を短くするために左右の余白を減らす */
+    font-size: 15px; /* フォントサイズを小さくする */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap; /* テキストが折り返されないように */
+}
+
+#delete_media_button:hover {
+    background-color: darkred;
+}
+
+
+/* ボタンのスタイル */
+button {
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center; /* ボタンを中央に配置 */
+    width: 200px;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* ボタンが無効になったとき */
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

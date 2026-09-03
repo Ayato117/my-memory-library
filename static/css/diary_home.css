@@ -1,0 +1,151 @@
+.diary-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3列固定 */
+  gap: 15px; /* カード間の隙間 */
+  justify-content: center;
+  margin-top: 5vh;
+  margin-bottom: 4vh;
+  width: 100%; /* contents幅に合わせる */
+}
+
+.diary-card {
+  width: 100%; /* カードの幅を一定にする */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.diary-card img.diary-image,
+.diary-card video.diary-video {
+  width: 100%; /* コンテナ幅に合わせる */
+  height: 200px; /* 高さを固定 */
+  object-fit: cover; /* アスペクト比を保ちながら中央でトリミング */
+}
+
+.diary-card img.no-image {
+  width: 100%;
+  height: 200px; /* 高さを固定 */
+  object-fit: cover; /* アスペクト比を保ちながらトリミング */
+  background-color: #f2f2f2; /* デフォルト画像背景色 */
+  text-align: center;
+  line-height: 200px;
+  color: #999; /* 背景色と合わせた文字色 */
+}
+
+.diary-card-header {
+  padding: 10px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.diary-card-body {
+  display: flex; /* 横並びにする */
+  justify-content: space-between; /* 左右に配置 */
+  align-items: center; /* 垂直方向を中央揃え */
+  padding: 10px;
+  gap: 10px; /* ボタン間の隙間 */
+}
+
+button {
+  display: inline-flex; /* フレックスボックスで中央揃え */
+  align-items: center; /* 垂直方向の中央揃え */
+  justify-content: center; /* 横方向の中央揃え */
+  padding: 4px 10px; /* ボタン内の余白（小さめ） */
+  font-size: 12px; /* 文字サイズを小さく */
+  line-height: 1.4; /* 行の高さを少し小さめに */
+  height: 30px; /* ボタンの高さを小さく */
+  border-radius: 5px; /* ボタンの角丸 */
+  cursor: pointer; /* ポインター表示 */
+  box-sizing: border-box; /* パディングを含む幅計算 */
+}
+
+/* 詳細へボタンのデザイン */
+.detail-button {
+  background-color: #007bff; /* 青色 */
+  color: white;
+  border: none; /* ボーダー削除 */
+}
+
+.detail-button:hover {
+  background-color: #0056b3; /* ホバー時の濃い青 */
+}
+
+/* 削除ボタンのデザイン */
+.delete-button {
+  background-color: red; /* 赤色 */
+  color: white;
+  border: none; /* ボーダー削除 */
+}
+
+.delete-button:hover {
+  background-color: darkred; /* ホバー時の濃い赤 */
+}
+
+/* Flashメッセージのコンテナ */
+#flash-message-container {
+  position: fixed;
+  top: -11vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8; /* 他のコンテンツの上に表示 */
+  max-width: 90%; /* 画面幅に応じて調整 */
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 各フラッシュメッセージのスタイル */
+.flash-message {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 成功メッセージのスタイル */
+.flash-message.success {
+  background-color: #28a745; /* 緑 */
+}
+
+/* エラーメッセージのスタイル */
+.flash-message.error {
+  background-color: #dc3545; /* 赤 */
+}
+
+/* 情報メッセージのスタイル */
+.flash-message.info {
+  background-color: #17a2b8; /* 青 */
+}
+
+/* 警告メッセージのスタイル */
+.flash-message.warning {
+  background-color: #ffc107; /* 黄 */
+}
+
+.no-diary-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32vh; /* 画面全体の高さ */
+  position: absolute;       /* 親要素の影響を受けないように絶対配置 */
+  top: 50%;                 /* 縦方向で中央 */
+  left: 50%;                /* 横方向で中央 */
+  transform: translate(-50%, -50%); /* 真ん中に整列 */
+  width: 100%;              /* 横幅を100% */
+}
+
+.no-diary {
+  width: 40vw; /* 画像サイズを画面幅に応じて調整 */
+  height: 65vh; /* 画面の高さを超えないように制限 */
+  border-radius: 8px 8px 8px 8px;
+}

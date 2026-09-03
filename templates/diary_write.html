@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="/static/css/diary_write.css">
+{% extends "diary.html" %}
+
+{% block title %}
+Write Page
+{% endblock %}
+{% block content %}
+
+<div class="diary-contents">
+    <form method="POST" action="{{ url_for('diary_write') }}" enctype="multipart/form-data">
+        <label for="diary_title">Title:</label>
+        <input type="text" name="diary_title" id="diary_title" required>
+
+        <label for="diary_date">Date:</label>
+        <input type="date" name="diary_date" id="diary_date" required>
+
+        <label for="diary_content">Content:</label>
+        <textarea name="diary_content" id="diary_content" required></textarea>
+
+        <label for="diary_image">Media (image or video):</label>
+        <div class="file-container">
+            <input type="file" name="diary_image" id="diary_image" accept="image/*,video/*" onchange="previewMedia()">
+            <button type="button" id="delete_media_button" onclick="deleteMedia()" style="display: none;">Delete</button>
+        </div>
+        
+        <div id="image_preview_container" style="display: none;">
+            <img id="image_preview" src="#" alt="Image Preview" style="max-width: 100%; height: auto;">
+        </div>
+
+        <div id="video_preview_container" style="display: none;">
+            <video id="video_preview" style="max-width: 100%; height: auto;" controls></video>
+        </div>
+
+        <button type="submit">Save Diary</button>
+    </form>
+</div>
+
+<script src="{{ url_for('static', filename='../static/js/preview.js') }}"></script>
+
+{% endblock %}

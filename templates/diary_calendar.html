@@ -1,0 +1,23 @@
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
+<link rel="stylesheet" href="/static/css/diary_calendar.css">
+
+{% extends "diary.html" %}
+
+{% block title %}
+    Calendar Page
+{% endblock %}
+
+{% block content %}
+<div>
+<!-- カレンダー表示エリア -->
+<div id="calendar"></div>
+
+<!-- カレンダー用データ -->
+<script>
+    const events = {{ events|tojson }};
+</script>
+
+<script src="/static/js/calendar.js"></script>
+</div>
+{% endblock %}

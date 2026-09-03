@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="/static/css/diary_home.css">
+
+{% extends "diary.html" %}
+
+{% block title %}
+My Diary Page
+{% endblock %}
+
+{% block content %}
+
+<div class="diary-cards-container">
+    {% if events %}
+    {% for entry in events %}
+    <div class="diary-card">
+        <div class="diary-card-header">
+            <h2>{{ entry.title }}</h2>
+            <p class="diary-date">{{ entry.start }}</p>
+        </div>
+        {% if entry.image_url and entry.image_url.endswith(('.mp4', '.webm', '.ogg')) %}
+        <video src="{{ entry.image_url }}" class="diary-video" controls></video>
+        {% elif entry.image_url and entry.image_url.endswith(('.jpg', '.jpeg', '.png', '.gif')) %}
+        <img src="{{ entry.image_url }}" class="diary-image" alt="Diary Image">
+        {% else %}
+        <img src="{{ url_for('static', filename='../static/img/no-image.png') }}" class="diary-image no-image"
+            alt="No Image">
+        {% endif %}
+        <div class="diary-card-body">
+            <!-- 詳細へのボタン -->
+            <button class="detail-button" onclick="window.location.href='{{ url_for('diary_detail', diary_id=entry['diary_id']) }}'">詳細へ</button>
+
+            <!-- 削除ボタン -->
+            <form action="{{ url_for('delete_diary', diary_id=entry['diary_id']) }}" method="POST" style="margin: 0; display: inline;">
+                <button type="submit" class="delete-button" onclick="return confirm('本当にこの日記を削除しますか？');">削除</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="no-diary-container">
+        <img src="{{ url_for('static', filename='../static/img/nodiary.jpg') }}" class="no-diary" alt="No Diary">
+    </div>
+    {% endif %}
+</div>
+
+<!-- {% if request.args.get('delete_success') %}
+    <script>
+        window.onload = function() {
+            alert('日記が削除されました。');
+        }
+    </script>
+{% endif %} -->
+<!-- Flashメッセージの表示 -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div id="flash-message-container">
+      {% for category, message in messages %}
+        <div class="flash-message {{ category }}">
+          <p>{{ message }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+{% endblock %}

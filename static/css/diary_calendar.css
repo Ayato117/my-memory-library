@@ -1,0 +1,9 @@
+/* カレンダー全体のスタイル */
+#calendar {
+    width: 55vw;
+    margin-bottom: 5vh;
+    padding: 15px;
+    background-color: #f9f9f9; /* 背景色を薄いグレーに */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 柔らかい影を追加 */
+}

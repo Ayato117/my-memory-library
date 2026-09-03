@@ -1,0 +1,119 @@
+/* 全体の中央寄せ */
+.diary-edit-contents {
+    text-align: center;
+    margin: 4vh auto;
+    max-width: 600px;
+}
+
+/* フォーム全体のスタイル */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ボタンを横並びに配置するコンテナ */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* ボタン間のスペース */
+}
+
+/* 入力フィールドのスタイル */
+input[type="text"], input[type="date"], textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* 入力フィールドのフォーカス時のスタイル */
+input[type="text"]:focus, input[type="date"]:focus, textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* テキストエリアのリサイズを禁止 */
+textarea {
+    resize: none;
+    height: 25vh;
+}
+
+/* ボタンのスタイル */
+button {
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 200px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* 戻るリンクのスタイル */
+.back-button {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #6c757d; /* 背景色をグレーに */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+}
+
+/* ファイルアップロードと削除ボタンのスタイル */
+.file-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#delete_media_button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+#delete_media_button:hover {
+    background-color: darkred;
+}
+
+/* プレビューエリア */
+#image_preview, #video_preview {
+    max-width: 100%;
+    max-height: 400px;
+    height: auto;
+    margin-top: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}
+
+#video_preview {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
